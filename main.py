@@ -17,7 +17,7 @@ async def on_message(message):
     if message.content.startswith('!tz '):
         msg = message.content.split()
         timestamp = f'{msg[1]} {msg[2]}' if len(msg) > 2 else f'{msg[1]}'
-        await message.channel.send(get_discord_posix_timestamps(timestamp, msg[3])) if len(msg) > 2 else message.channel.send(get_discord_posix_timestamps(timestamp))
+        await message.channel.send(get_discord_posix_timestamps(timestamp, msg[3], verbose='-v' in message.content)) if len(msg) > 2 else message.channel.send(get_discord_posix_timestamps(timestamp, verbose='-v' in message.content))
 
 
 modifiers =['t','D','f','F','R']
@@ -58,13 +58,16 @@ def calc_time_diff(timezone):
 def convert_iso2posix(iso_timestamp):
 	return int(dt.datetime.timestamp(dt.datetime.fromisoformat(iso_timestamp)))
 	
-def get_discord_posix_timestamps(iso_timestamp, timezone = None):
+def get_discord_posix_timestamps(iso_timestamp, timezone = None, verbose = True):
     posix_timestamp = convert_iso2posix(iso_timestamp)
 
     if timezone:
         posix_timestamp = posix_timestamp - (3600*calc_time_diff(timezone))
 	
-    return "".join([f'`<t:{posix_timestamp}:{mod}>`\n<t:{posix_timestamp}:{mod}>\n\n' for mod in modifiers])
+    if verbose:
+        return "".join([f'`<t:{posix_timestamp}:{mod}>`\n<t:{posix_timestamp}:{mod}>\n\n' for mod in modifiers])
+    else:
+        return "".join([f'`<t:{posix_timestamp}:{mod}>`' for mod in modifiers])
 
 
 client.run(TOKEN)
