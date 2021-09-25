@@ -4,6 +4,6 @@ Discord has these very useful Unix timestamps, but generating can be a bit of a 
 
 Simply feed it a date in ISO format (YYYY-MM-DD [HH:MM]) and augment it with your timezone (like PST+3, or UTC-2) if necessary, and the bot gives you a handy dandy overview of copy/pastable configurations for your timestamps, ready to paste into Discord :) 
 
-I don't personally have this bot hosted anywhere, but feel free to use the sourcecode to host it yourself. All you need to do is [install the discord API module](https://discordpy.readthedocs.io/en/latest/intro.html) and create your own bot through the [Discord Developer Portal](https://realpython.com/how-to-make-a-discord-bot-python/#how-to-make-a-discord-bot-in-the-developer-portal) portal; 
+I don't personally have this bot hosted anywhere, but feel free to use the sourcecode to host it yourself. All you need to do is [install the discord API module](https://discordpy.readthedocs.io/en/latest/intro.html) and create your own bot through the [Discord Developer Portal](https://realpython.com/how-to-make-a-discord-bot-python/#how-to-make-a-discord-bot-in-the-developer-portal). 
 
 ![Bot output](resources/timestamp.png?raw=true "Bot Output")
