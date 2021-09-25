@@ -17,7 +17,7 @@ async def on_message(message):
     if message.content.startswith('!tz '):
         msg = message.content.split()
         timestamp = f'{msg[1]} {msg[2]}' if len(msg) > 2 else f'{msg[1]}'
-        await message.channel.send(get_discord_posix_timestamps(timestamp, msg[3], verbose='-v' in message.content)) if len(msg) > 2 else message.channel.send(get_discord_posix_timestamps(timestamp, verbose='-v' in message.content))
+        await message.channel.send(get_discord_posix_timestamps(timestamp, msg[3], verbose!='-v' in message.content)) if len(msg) > 2 else message.channel.send(get_discord_posix_timestamps(timestamp, verbose!='-v' in message.content))
 
 
 modifiers =['t','D','f','F','R']
