@@ -8,13 +8,10 @@ client = discord.Client()
 @client.event
 async def on_ready():
     print(f'{client.user} has connected to Discord')
-    # Zo kun je in je console zien dat de bot online gegaan is
-    # Maar je kunt hier natuurlijk laten doen wat je wilt
 
 @client.event
 async def on_message(message):
     if message.author == client.user:
-        # Zodat de bot niet op zichzelf reageert
         return
     
     if message.content.startswith('!tz '):
@@ -23,8 +20,8 @@ async def on_message(message):
         await message.channel.send(get_discord_posix_timestamps(timestamp, msg[3])) if len(msg) > 2 else message.channel.send(get_discord_posix_timestamps(timestamp))
 
 
-modifiers = ['t','D','f','F','R']
-timezones = {'CAT':-1,
+modifiers =['t','D','f','F','R']
+timezones ={'CAT':-1,
             'BET':-3,
             'AGT':-3,
             'PRT':-4,
@@ -52,7 +49,7 @@ timezones = {'CAT':-1,
             'ECT':1,
             'UTC':0,
             'GMT':0
-}
+            }
 
 def calc_time_diff(timezone):
     zone, diff = timezone.upper().split('+') if '+' in timezone else timezone.split('-')
