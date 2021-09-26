@@ -34,3 +34,16 @@ def calc_time_diff(timezone):
 
 def convert_iso2posix(iso_timestamp):
 	return int(dt.datetime.timestamp(dt.datetime.fromisoformat(iso_timestamp)))
+    
+modifiers =['t','D','f','F','R']
+    
+def get_discord_posix_timestamps(iso_timestamp, timezone = None, verbose = True):
+    posix_timestamp = tsu.convert_iso2posix(iso_timestamp)
+
+    if timezone:
+        posix_timestamp = posix_timestamp - (3600*tsu.calc_time_diff(timezone))
+	
+    if verbose:
+        return "".join([f'`<t:{posix_timestamp}:{mod}>`\n<t:{posix_timestamp}:{mod}>\n\n' for mod in modifiers])
+    else:
+        return "".join([f'`<t:{posix_timestamp}:{mod}>`' for mod in modifiers])
